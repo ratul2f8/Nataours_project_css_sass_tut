@@ -1,0 +1,66 @@
+.story{
+    width: 75%;
+    margin:0 auto;
+    box-shadow:0 3rem 6rem rgba($color-black, .1);
+    border-radius: 3px;
+    padding: 6rem;
+    background-color: $color-white;
+    font-size: $default-font-size;
+    color: $color-black;
+    transform: skewX(-10deg);
+    @include respond(tab-port){
+        width: 100%;
+        padding: 4rem;
+    }
+    @include respond(phone){
+        transform: skewX(0deg);
+    }
+    &__shape{
+        width: 15rem;
+        height: 15rem;
+        background-color: blue;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(45% at 50% 50%);
+        transform: translateX(-3rem)skewX(10deg);
+        @include respond(phone){
+            transform: translateX(-3rem) skewX(0deg);
+        }
+    }
+    &__img{
+        height: 100%;
+        transform: scale(1.4) translateX(-3rem);
+        transition: all 0.5s;
+
+    }
+    &__text{
+        transform: skewX(10deg);
+        @include respond(phone){
+            transform: skewX(0deg);
+        }
+        
+    }
+    &__caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        color: $color-white;
+        text-align: center;
+        opacity: 0;
+        transition: all 0.5s;
+        backface-visibility: hidden;
+    }
+    &:hover &__caption{
+        opacity: 1;
+        transform: translate(-50%, -50%) ;
+    }
+    &:hover &__img{
+        transform: scale(0.9) translateX(-3rem);
+        filter: blur(3px) brightness(80%);
+    }
+}
